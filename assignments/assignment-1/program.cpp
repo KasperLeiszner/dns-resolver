@@ -28,7 +28,7 @@ int main() {
     float a, b, result;
     char mathExpression;
 
-    cout << "Enter math an basic math expression: ";
+    cout << "Enter an basic math expression: ";
     cin >> a >> mathExpression >> b;
 
     switch(mathExpression) {
