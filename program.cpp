@@ -1,40 +1,43 @@
-#include <string.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netinet/in.h>
+#include <string>
+#include <iostream>
+#include <sys/types.h> 
+#include <sys/socket.h> 
+#include <arpa/inet.h> 
+#include <netinet/in.h> 
+#include <stdlib.h> 
 #include <unistd.h>
-#include <cstring>
+
+#define PORT     8080 
 
 using namespace std;
 
 int main(){
-  string targetDomain;
-  
-  cout << "Insert domain: ";
-  cin >> targetDomain;
-  cout << "Searching for ip address related to domain " + targetDomain << endl;
-  
-  int udp_socket = socket(AF_INET, SOCK_DGRAM, 0);
-  
-  if ( udp_socket < 0 ) {
-    cerr << "socket creation failed\n";
-    return -1;
-  }
-  
-  cout << "UDP socket created succesfully\n";
-  
-  struct sockaddr_in server_address;
-  memset(&server_address, 0, sizeof(server_address));
-  server_address.sin_family = AF_INET;
-  server_address.sin_port = htons(53);
-  
-  const string rootServer = "8.8.8.8";
-  
-  if (inet_pton(AF_INET, rootServer, &server_address.sin_addr) <= 0){
-    cerr << "Invalid address or address not supported\n";
-    close(udp_socket);
-    return -1;
-  }
-  
-  return 0;
+    string targetDomain;
+    cout << "Insert domain: ";
+    cin >> targetDomain;
+    cout << "Searching for ip address related to domain " + targetDomain << endl;
+
+    string rootServer = "8.8.8.8";
+    int sockfd;
+    struct sockaddr_in servaddr; 
+    const char *hello = "Hello from client"; 
+
+    if( (sockfd = socket(AF_INET, SOCK_DGRAM, 0)) < 0){
+        cerr << "socket creation failed" << endl;
+    }
+
+    memset(&servaddr, 0, sizeof(servaddr));
+
+    servaddr.sin_family = AF_INET; 
+    servaddr.sin_port = htons(PORT); 
+    servaddr.sin_addr.s_addr = INADDR_ANY; 
+       
+    int n;
+    socklen_t len; 
+       
+    sendto(sockfd, (const char *)hello, strlen(hello), 0, (const struct sockaddr *) &servaddr, sizeof(servaddr)); 
+
+    cout << "Hello world!" << endl;
+
+    return 0;
 }
