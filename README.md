@@ -4,7 +4,7 @@ This project is made for learning C++ programming language. It is a roadmap with
 # C++ Learning Roadmap with Assignments
 
 ## Stage 1: C++ Fundamentals
-- [ ] **Assignment 1: Calculator Program**
+- [ X ] **Assignment 1: Calculator Program**
   - Write a basic calculator that performs addition, subtraction, multiplication, and division.
   - Use control flow to process user inputs.
   - Handle errors like division by zero and invalid inputs.
