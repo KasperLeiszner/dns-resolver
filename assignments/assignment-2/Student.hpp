@@ -10,10 +10,10 @@ class Student
 {
     public:
         Student(const std::string& name, int id, const std::vector<Grades>& grades);
-        void display();
+        void display() const;
         void addGrade(Grades grade);
-        float getAverageGrades();
-        int getId();
+        float getAverageGrades() const;
+        int getId() const;
 
     private:
         std::string name;

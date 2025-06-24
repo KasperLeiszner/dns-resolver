@@ -2,8 +2,6 @@
 #include "Classroom.hpp"
 #include "Grades.hpp"
 
-using namespace std;
-
 int main() {
     Student spiderman("Spiderman", 0, { B, C });
     spiderman.addGrade(APlus);

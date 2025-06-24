@@ -6,15 +6,20 @@ void Classroom::addStudent(Student student) {
 
 void Classroom::removeStudent(Student student) {
     for(int i = 0; i < students.size(); i++) {
-        if(students[i].getId() == student.getId())
-            students.erase(students.begin() + i);       
+        if(students[i].getId() == student.getId()) {
+            students.erase(students.begin() + i);
+            return;       
+        }
     }
 }
 
-float Classroom::getAverageGrades() {
+float Classroom::getAverageGrades() const {
+    if (students.empty())
+        return 0.0;
+    
     float sum = 0;
 
-    for (Student student : students)
+    for (const Student& student : students)
     {
         sum += student.getAverageGrades();
     }
@@ -22,7 +27,7 @@ float Classroom::getAverageGrades() {
     return sum/students.size();
 }
 
-void Classroom::display() {
+void Classroom::display() const {
     for (Student student : students)
     {
         student.display();

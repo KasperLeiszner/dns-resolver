@@ -6,7 +6,7 @@ Student::Student(const std::string& name, int id, const std::vector<Grades>& gra
     this->grades = grades;
 }
 
-void Student::display() {
+void Student::display() const {
     std::cout << "Name: " << name << std::endl;
     std::cout << "Id: " << id << std::endl;
     std::cout << "Grade Avg: " << getAverageGrades() << std::endl;
@@ -24,11 +24,14 @@ void Student::addGrade(Grades grade) {
     grades.push_back(grade);
 }
 
-int Student::getId() {
+int Student::getId() const {
     return id;
 }
 
-float Student::getAverageGrades() {
+float Student::getAverageGrades() const {
+    if (grades.empty())
+        return 0.0; 
+
     float sum = 0;
     
     for(int gradeNumeric : grades) {

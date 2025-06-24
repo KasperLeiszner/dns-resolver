@@ -8,8 +8,8 @@ class Classroom {
     public:
         void addStudent(Student student);
         void removeStudent(Student student);
-        float getAverageGrades();
-        void display();
+        float getAverageGrades() const;
+        void display() const;
     private:
         std::vector<Student> students;
 };
