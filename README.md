@@ -14,7 +14,7 @@ This project is made for learning C++ programming language. It is a roadmap with
   - Implement methods to add grades and calculate averages.
   - Add a `Classroom` class to manage multiple students and calculate the class average.
 
-- [ ] **Assignment 3: Basic File I/O Program**
+- [x] **Assignment 3: Basic File I/O Program**
   - Read a list of names from a file and write them to another file in uppercase.
   - Handle file errors like "file not found" or empty files gracefully.
 
