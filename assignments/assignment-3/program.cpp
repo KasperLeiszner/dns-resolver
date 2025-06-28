@@ -22,10 +22,19 @@ int main() {
         return 1;
     }
 
+    ofstream fileWriter("uppercase-names.txt");
+
     while(getline (fileReader, name)) {
-        cout << name << endl;       
+        for (int i = 0; i < name.length(); i++)
+        {
+            fileWriter << (char)toupper(name[i]);
+
+        }
+
+        fileWriter << endl;
     }
 
+    fileWriter.close();
     fileReader.close();
 
     return 0;
